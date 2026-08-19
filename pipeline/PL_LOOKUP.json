@@ -32,6 +32,29 @@
 					},
 					"firstRowOnly": false
 				}
+			},
+			{
+				"name": "Filter1",
+				"type": "Filter",
+				"dependsOn": [
+					{
+						"activity": "Lookup1",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"items": {
+						"value": "@activity('Lookup1').output.value",
+						"type": "Expression"
+					},
+					"condition": {
+						"value": "@equals(item().SIC_Code,'1110')",
+						"type": "Expression"
+					}
+				}
 			}
 		],
 		"annotations": []
