@@ -27,6 +27,10 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'accountKey' of 'AzureDataLakeStorage5'"
 		},
+		"AzureDataLakeStorage6_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'AzureDataLakeStorage6'"
+		},
 		"DS_ADLS_PRQUET_accountKey": {
 			"type": "secureString",
 			"metadata": "Secure string for 'accountKey' of 'DS_ADLS_PRQUET'"
@@ -66,6 +70,10 @@
 		"AzureDataLakeStorage5_properties_typeProperties_url": {
 			"type": "string",
 			"defaultValue": "https://adlsoutputdataproject.dfs.core.windows.net/"
+		},
+		"AzureDataLakeStorage6_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://adlsgen2scdevproject001.dfs.core.windows.net/"
 		},
 		"DS_ADLS_PRQUET_properties_typeProperties_url": {
 			"type": "string",
@@ -121,6 +129,9 @@
 					"AzureDataLakeStorage5_accountKey": {
 						"value": "[parameters('AzureDataLakeStorage5_accountKey')]"
 					},
+					"AzureDataLakeStorage6_accountKey": {
+						"value": "[parameters('AzureDataLakeStorage6_accountKey')]"
+					},
 					"DS_ADLS_PRQUET_accountKey": {
 						"value": "[parameters('DS_ADLS_PRQUET_accountKey')]"
 					},
@@ -150,6 +161,9 @@
 					},
 					"AzureDataLakeStorage5_properties_typeProperties_url": {
 						"value": "[parameters('AzureDataLakeStorage5_properties_typeProperties_url')]"
+					},
+					"AzureDataLakeStorage6_properties_typeProperties_url": {
+						"value": "[parameters('AzureDataLakeStorage6_properties_typeProperties_url')]"
 					},
 					"DS_ADLS_PRQUET_properties_typeProperties_url": {
 						"value": "[parameters('DS_ADLS_PRQUET_properties_typeProperties_url')]"

@@ -20,6 +20,9 @@
 		"AzureDataLakeStorage5_accountKey": {
 			"value": ""
 		},
+		"AzureDataLakeStorage6_accountKey": {
+			"value": ""
+		},
 		"DS_ADLS_PRQUET_accountKey": {
 			"value": ""
 		},
@@ -49,6 +52,9 @@
 		},
 		"AzureDataLakeStorage5_properties_typeProperties_url": {
 			"value": "https://adlsoutputdataproject.dfs.core.windows.net/"
+		},
+		"AzureDataLakeStorage6_properties_typeProperties_url": {
+			"value": "https://adlsgen2scdevproject001.dfs.core.windows.net/"
 		},
 		"DS_ADLS_PRQUET_properties_typeProperties_url": {
 			"value": "https://adlsgen2scdevproject001.dfs.core.windows.net/"
