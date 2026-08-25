@@ -106,6 +106,10 @@
 							},
 							"userProperties": [],
 							"typeProperties": {
+								"pipeline": {
+									"referenceName": "PL_CHILD_Pipeline_StoreProcedure",
+									"type": "PipelineReference"
+								},
 								"waitOnCompletion": true
 							}
 						}
