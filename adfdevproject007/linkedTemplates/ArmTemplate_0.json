@@ -35,6 +35,10 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'accountKey' of 'DS_ADLS_PRQUET'"
 		},
+		"LS_ADLS_PArQUET_DATA_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'LS_ADLS_PArQUET_DATA'"
+		},
 		"LS_BOLB_CSV_ADLS_PRQUET_connectionString": {
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'LS_BOLB_CSV_ADLS_PRQUET'"
@@ -50,6 +54,22 @@
 		"LS_Binary_TXT_accountKey": {
 			"type": "secureString",
 			"metadata": "Secure string for 'accountKey' of 'LS_Binary_TXT'"
+		},
+		"LS_PARQUET_ADLS_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'LS_PARQUET_ADLS'"
+		},
+		"LS_ADLS_PARQUET_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'LS_ADLS_PARQUET'"
+		},
+		"LS_DATA_ADLS_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'LS_DATA_ADLS'"
+		},
+		"LS_PARENT_SQLSEVER_LOOKUP_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'LS_PARENT_SQLSEVER_LOOKUP'"
 		},
 		"AzureDataLakeStorage1_properties_typeProperties_url": {
 			"type": "string",
@@ -79,6 +99,10 @@
 			"type": "string",
 			"defaultValue": "https://adlsgen2scdevproject001.dfs.core.windows.net/"
 		},
+		"LS_ADLS_PArQUET_DATA_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://adlsoutputdataproject.dfs.core.windows.net"
+		},
 		"LS_BinaryInputDATA_properties_typeProperties_url": {
 			"type": "string",
 			"defaultValue": "https://adlsgen2scdevproject001.dfs.core.windows.net/"
@@ -86,6 +110,30 @@
 		"LS_Binary_TXT_properties_typeProperties_url": {
 			"type": "string",
 			"defaultValue": "https://adlsgen2scdevproject001.dfs.core.windows.net/"
+		},
+		"LS_PARQUET_ADLS_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://adlsoutputdataproject.dfs.core.windows.net"
+		},
+		"LS_ADLS_PARQUET_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://adlsoutputdataproject.dfs.core.windows.net/"
+		},
+		"LS_DATA_ADLS_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://adlsoutputdataproject.dfs.core.windows.net/"
+		},
+		"LS_PARENT_SQLSEVER_LOOKUP_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "ARVIND\\SQLEXPRESS02"
+		},
+		"LS_PARENT_SQLSEVER_LOOKUP_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "RetailDW_dev"
+		},
+		"LS_PARENT_SQLSEVER_LOOKUP_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "Arvindvg"
 		}
 	},
 	"variables": {
@@ -235,6 +283,23 @@
 			"dependsOn": []
 		},
 		{
+			"name": "[concat(parameters('factoryName'), '/LS_ADLS_PArQUET_DATA')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureBlobFS",
+				"typeProperties": {
+					"url": "[parameters('LS_ADLS_PArQUET_DATA_properties_typeProperties_url')]",
+					"accountKey": {
+						"type": "SecureString",
+						"value": "[parameters('LS_ADLS_PArQUET_DATA_accountKey')]"
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
 			"name": "[concat(parameters('factoryName'), '/LS_BOLB_CSV_ADLS_PRQUET')]",
 			"type": "Microsoft.DataFactory/factories/linkedServices",
 			"apiVersion": "2018-06-01",
@@ -295,6 +360,23 @@
 			"dependsOn": []
 		},
 		{
+			"name": "[concat(parameters('factoryName'), '/LS_PARQUET_ADLS')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureBlobFS",
+				"typeProperties": {
+					"url": "[parameters('LS_PARQUET_ADLS_properties_typeProperties_url')]",
+					"accountKey": {
+						"type": "SecureString",
+						"value": "[parameters('LS_PARQUET_ADLS_accountKey')]"
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
 			"name": "[concat(parameters('factoryName'), '/integrationRuntime1')]",
 			"type": "Microsoft.DataFactory/factories/integrationRuntimes",
 			"apiVersion": "2018-06-01",
@@ -342,74 +424,114 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/PL_LOOKUP')]",
-			"type": "Microsoft.DataFactory/factories/pipelines",
+			"name": "[concat(parameters('factoryName'), '/DS_ParquetDATA')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
 			"properties": {
-				"activities": [
-					{
-						"name": "Lookup1",
-						"type": "Lookup",
-						"dependsOn": [],
-						"policy": {
-							"timeout": "0.12:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [],
-						"typeProperties": {
-							"source": {
-								"type": "DelimitedTextSource",
-								"storeSettings": {
-									"type": "AzureBlobFSReadSettings",
-									"recursive": true,
-									"enablePartitionDiscovery": false
-								},
-								"formatSettings": {
-									"type": "DelimitedTextReadSettings"
-								}
-							},
-							"dataset": {
-								"referenceName": "DS_LookUp",
-								"type": "DatasetReference",
-								"parameters": {}
-							},
-							"firstRowOnly": false
-						}
-					},
-					{
-						"name": "Filter1",
-						"type": "Filter",
-						"dependsOn": [
-							{
-								"activity": "Lookup1",
-								"dependencyConditions": [
-									"Succeeded"
-								]
-							}
-						],
-						"userProperties": [],
-						"typeProperties": {
-							"items": {
-								"value": "@activity('Lookup1').output.value",
-								"type": "Expression"
-							},
-							"condition": {
-								"value": "@equals(item().SIC_Code,'1110')",
-								"type": "Expression"
-							}
-						}
-					}
-				],
-				"policy": {
-					"elapsedTimeMetric": {}
+				"linkedServiceName": {
+					"referenceName": "LS_PARQUET_ADLS",
+					"type": "LinkedServiceReference"
 				},
-				"annotations": []
+				"parameters": {
+					"Table_Name": {
+						"type": "string"
+					}
+				},
+				"annotations": [],
+				"type": "Parquet",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobFSLocation",
+						"fileName": {
+							"value": "@concat(dataset().Table_Name,'_',formatDateTime(utcNow(),'yyyyMMddHHmmss'),'.parquet')",
+							"type": "Expression"
+						},
+						"folderPath": {
+							"value": "@concat(dataset().Table_Name,'/',formatDateTime(utcNow(),'yyyy/MM/dd'))",
+							"type": "Expression"
+						},
+						"fileSystem": "retaildataoutput"
+					},
+					"compressionCodec": "snappy"
+				},
+				"schema": []
 			},
 			"dependsOn": [
-				"[concat(variables('factoryId'), '/datasets/DS_LookUp')]"
+				"[concat(variables('factoryId'), '/linkedServices/LS_PARQUET_ADLS')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/LS_ADLS_PARQUET')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureBlobFS",
+				"typeProperties": {
+					"url": "[parameters('LS_ADLS_PARQUET_properties_typeProperties_url')]",
+					"accountKey": {
+						"type": "SecureString",
+						"value": "[parameters('LS_ADLS_PARQUET_accountKey')]"
+					}
+				},
+				"connectVia": {
+					"referenceName": "integrationRuntime1",
+					"type": "IntegrationRuntimeReference"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/integrationRuntimes/integrationRuntime1')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/LS_DATA_ADLS')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureBlobFS",
+				"typeProperties": {
+					"url": "[parameters('LS_DATA_ADLS_properties_typeProperties_url')]",
+					"accountKey": {
+						"type": "SecureString",
+						"value": "[parameters('LS_DATA_ADLS_accountKey')]"
+					}
+				},
+				"connectVia": {
+					"referenceName": "integrationRuntime1",
+					"type": "IntegrationRuntimeReference"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/integrationRuntimes/integrationRuntime1')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/LS_PARENT_SQLSEVER_LOOKUP')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "SqlServer",
+				"typeProperties": {
+					"server": "[parameters('LS_PARENT_SQLSEVER_LOOKUP_properties_typeProperties_server')]",
+					"database": "[parameters('LS_PARENT_SQLSEVER_LOOKUP_properties_typeProperties_database')]",
+					"encrypt": "mandatory",
+					"trustServerCertificate": true,
+					"authenticationType": "SQL",
+					"userName": "[parameters('LS_PARENT_SQLSEVER_LOOKUP_properties_typeProperties_userName')]",
+					"password": {
+						"type": "SecureString",
+						"value": "[parameters('LS_PARENT_SQLSEVER_LOOKUP_password')]"
+					}
+				},
+				"connectVia": {
+					"referenceName": "integrationRuntime1",
+					"type": "IntegrationRuntimeReference"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/integrationRuntimes/integrationRuntime1')]"
 			]
 		}
 	]

@@ -35,6 +35,14 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'accountKey' of 'DS_ADLS_PRQUET'"
 		},
+		"LS_ADLS_PARQUET_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'LS_ADLS_PARQUET'"
+		},
+		"LS_ADLS_PArQUET_DATA_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'LS_ADLS_PArQUET_DATA'"
+		},
 		"LS_BOLB_CSV_ADLS_PRQUET_connectionString": {
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'LS_BOLB_CSV_ADLS_PRQUET'"
@@ -50,6 +58,22 @@
 		"LS_Binary_TXT_accountKey": {
 			"type": "secureString",
 			"metadata": "Secure string for 'accountKey' of 'LS_Binary_TXT'"
+		},
+		"LS_DATA_ADLS_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'LS_DATA_ADLS'"
+		},
+		"LS_PARENT_SQLSEVER_LOOKUP_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'LS_PARENT_SQLSEVER_LOOKUP'"
+		},
+		"LS_PARQUET_ADLS_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'LS_PARQUET_ADLS'"
+		},
+		"LS_SQL_ADLS_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'LS_SQL_ADLS'"
 		},
 		"AzureDataLakeStorage1_properties_typeProperties_url": {
 			"type": "string",
@@ -79,6 +103,14 @@
 			"type": "string",
 			"defaultValue": "https://adlsgen2scdevproject001.dfs.core.windows.net/"
 		},
+		"LS_ADLS_PARQUET_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://adlsoutputdataproject.dfs.core.windows.net/"
+		},
+		"LS_ADLS_PArQUET_DATA_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://adlsoutputdataproject.dfs.core.windows.net"
+		},
 		"LS_BinaryInputDATA_properties_typeProperties_url": {
 			"type": "string",
 			"defaultValue": "https://adlsgen2scdevproject001.dfs.core.windows.net/"
@@ -86,6 +118,38 @@
 		"LS_Binary_TXT_properties_typeProperties_url": {
 			"type": "string",
 			"defaultValue": "https://adlsgen2scdevproject001.dfs.core.windows.net/"
+		},
+		"LS_DATA_ADLS_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://adlsoutputdataproject.dfs.core.windows.net/"
+		},
+		"LS_PARENT_SQLSEVER_LOOKUP_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "ARVIND\\SQLEXPRESS02"
+		},
+		"LS_PARENT_SQLSEVER_LOOKUP_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "RetailDW_dev"
+		},
+		"LS_PARENT_SQLSEVER_LOOKUP_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "Arvindvg"
+		},
+		"LS_PARQUET_ADLS_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://adlsoutputdataproject.dfs.core.windows.net"
+		},
+		"LS_SQL_ADLS_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "ARVIND\\SQLEXPRESS"
+		},
+		"LS_SQL_ADLS_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "mydataEngg"
+		},
+		"LS_SQL_ADLS_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "Arvindvg"
 		},
 		"containerUri": {
 			"type": "string",
@@ -135,6 +199,9 @@
 					"DS_ADLS_PRQUET_accountKey": {
 						"value": "[parameters('DS_ADLS_PRQUET_accountKey')]"
 					},
+					"LS_ADLS_PArQUET_DATA_accountKey": {
+						"value": "[parameters('LS_ADLS_PArQUET_DATA_accountKey')]"
+					},
 					"LS_BOLB_CSV_ADLS_PRQUET_connectionString": {
 						"value": "[parameters('LS_BOLB_CSV_ADLS_PRQUET_connectionString')]"
 					},
@@ -146,6 +213,18 @@
 					},
 					"LS_Binary_TXT_accountKey": {
 						"value": "[parameters('LS_Binary_TXT_accountKey')]"
+					},
+					"LS_PARQUET_ADLS_accountKey": {
+						"value": "[parameters('LS_PARQUET_ADLS_accountKey')]"
+					},
+					"LS_ADLS_PARQUET_accountKey": {
+						"value": "[parameters('LS_ADLS_PARQUET_accountKey')]"
+					},
+					"LS_DATA_ADLS_accountKey": {
+						"value": "[parameters('LS_DATA_ADLS_accountKey')]"
+					},
+					"LS_PARENT_SQLSEVER_LOOKUP_password": {
+						"value": "[parameters('LS_PARENT_SQLSEVER_LOOKUP_password')]"
 					},
 					"AzureDataLakeStorage1_properties_typeProperties_url": {
 						"value": "[parameters('AzureDataLakeStorage1_properties_typeProperties_url')]"
@@ -168,15 +247,68 @@
 					"DS_ADLS_PRQUET_properties_typeProperties_url": {
 						"value": "[parameters('DS_ADLS_PRQUET_properties_typeProperties_url')]"
 					},
+					"LS_ADLS_PArQUET_DATA_properties_typeProperties_url": {
+						"value": "[parameters('LS_ADLS_PArQUET_DATA_properties_typeProperties_url')]"
+					},
 					"LS_BinaryInputDATA_properties_typeProperties_url": {
 						"value": "[parameters('LS_BinaryInputDATA_properties_typeProperties_url')]"
 					},
 					"LS_Binary_TXT_properties_typeProperties_url": {
 						"value": "[parameters('LS_Binary_TXT_properties_typeProperties_url')]"
+					},
+					"LS_PARQUET_ADLS_properties_typeProperties_url": {
+						"value": "[parameters('LS_PARQUET_ADLS_properties_typeProperties_url')]"
+					},
+					"LS_ADLS_PARQUET_properties_typeProperties_url": {
+						"value": "[parameters('LS_ADLS_PARQUET_properties_typeProperties_url')]"
+					},
+					"LS_DATA_ADLS_properties_typeProperties_url": {
+						"value": "[parameters('LS_DATA_ADLS_properties_typeProperties_url')]"
+					},
+					"LS_PARENT_SQLSEVER_LOOKUP_properties_typeProperties_server": {
+						"value": "[parameters('LS_PARENT_SQLSEVER_LOOKUP_properties_typeProperties_server')]"
+					},
+					"LS_PARENT_SQLSEVER_LOOKUP_properties_typeProperties_database": {
+						"value": "[parameters('LS_PARENT_SQLSEVER_LOOKUP_properties_typeProperties_database')]"
+					},
+					"LS_PARENT_SQLSEVER_LOOKUP_properties_typeProperties_userName": {
+						"value": "[parameters('LS_PARENT_SQLSEVER_LOOKUP_properties_typeProperties_userName')]"
 					}
 				}
 			},
 			"dependsOn": []
+		},
+		{
+			"name": "adfdevproject007_ArmTemplate_1",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2024-03-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_1.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"LS_SQL_ADLS_password": {
+						"value": "[parameters('LS_SQL_ADLS_password')]"
+					},
+					"LS_SQL_ADLS_properties_typeProperties_server": {
+						"value": "[parameters('LS_SQL_ADLS_properties_typeProperties_server')]"
+					},
+					"LS_SQL_ADLS_properties_typeProperties_database": {
+						"value": "[parameters('LS_SQL_ADLS_properties_typeProperties_database')]"
+					},
+					"LS_SQL_ADLS_properties_typeProperties_userName": {
+						"value": "[parameters('LS_SQL_ADLS_properties_typeProperties_userName')]"
+					}
+				}
+			},
+			"dependsOn": [
+				"[resourceId('Microsoft.Resources/deployments', 'adfdevproject007_ArmTemplate_0')]"
+			]
 		}
 	]
 }

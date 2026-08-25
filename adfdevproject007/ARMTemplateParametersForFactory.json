@@ -26,6 +26,12 @@
 		"DS_ADLS_PRQUET_accountKey": {
 			"value": ""
 		},
+		"LS_ADLS_PARQUET_accountKey": {
+			"value": ""
+		},
+		"LS_ADLS_PArQUET_DATA_accountKey": {
+			"value": ""
+		},
 		"LS_BOLB_CSV_ADLS_PRQUET_connectionString": {
 			"value": ""
 		},
@@ -36,6 +42,18 @@
 			"value": ""
 		},
 		"LS_Binary_TXT_accountKey": {
+			"value": ""
+		},
+		"LS_DATA_ADLS_accountKey": {
+			"value": ""
+		},
+		"LS_PARENT_SQLSEVER_LOOKUP_password": {
+			"value": ""
+		},
+		"LS_PARQUET_ADLS_accountKey": {
+			"value": ""
+		},
+		"LS_SQL_ADLS_password": {
 			"value": ""
 		},
 		"AzureDataLakeStorage1_properties_typeProperties_url": {
@@ -59,11 +77,41 @@
 		"DS_ADLS_PRQUET_properties_typeProperties_url": {
 			"value": "https://adlsgen2scdevproject001.dfs.core.windows.net/"
 		},
+		"LS_ADLS_PARQUET_properties_typeProperties_url": {
+			"value": "https://adlsoutputdataproject.dfs.core.windows.net/"
+		},
+		"LS_ADLS_PArQUET_DATA_properties_typeProperties_url": {
+			"value": "https://adlsoutputdataproject.dfs.core.windows.net"
+		},
 		"LS_BinaryInputDATA_properties_typeProperties_url": {
 			"value": "https://adlsgen2scdevproject001.dfs.core.windows.net/"
 		},
 		"LS_Binary_TXT_properties_typeProperties_url": {
 			"value": "https://adlsgen2scdevproject001.dfs.core.windows.net/"
+		},
+		"LS_DATA_ADLS_properties_typeProperties_url": {
+			"value": "https://adlsoutputdataproject.dfs.core.windows.net/"
+		},
+		"LS_PARENT_SQLSEVER_LOOKUP_properties_typeProperties_server": {
+			"value": "ARVIND\\SQLEXPRESS02"
+		},
+		"LS_PARENT_SQLSEVER_LOOKUP_properties_typeProperties_database": {
+			"value": "RetailDW_dev"
+		},
+		"LS_PARENT_SQLSEVER_LOOKUP_properties_typeProperties_userName": {
+			"value": "Arvindvg"
+		},
+		"LS_PARQUET_ADLS_properties_typeProperties_url": {
+			"value": "https://adlsoutputdataproject.dfs.core.windows.net"
+		},
+		"LS_SQL_ADLS_properties_typeProperties_server": {
+			"value": "ARVIND\\SQLEXPRESS"
+		},
+		"LS_SQL_ADLS_properties_typeProperties_database": {
+			"value": "mydataEngg"
+		},
+		"LS_SQL_ADLS_properties_typeProperties_userName": {
+			"value": "Arvindvg"
 		}
 	}
 }
