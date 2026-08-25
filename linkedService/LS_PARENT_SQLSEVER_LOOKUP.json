@@ -1,0 +1,21 @@
+{
+	"name": "LS_PARENT_SQLSEVER_LOOKUP",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "SqlServer",
+		"typeProperties": {
+			"server": "ARVIND\\SQLEXPRESS02",
+			"database": "RetailDW_dev",
+			"encrypt": "optional",
+			"trustServerCertificate": false,
+			"authenticationType": "SQL",
+			"userName": "Arvindvg",
+			"encryptedCredential": "eyJDcmVkZW50aWFsSWQiOiIyMmM4YTUxMi03MTJkLTRiZWYtOGRiMi05ZDQ5MGY1Zjc4MmMiLCJWZXJzaW9uIjoiMi4wIiwiQ2xhc3NUeXBlIjoiTWljcm9zb2Z0LkRhdGFQcm94eS5Db3JlLkludGVyU2VydmljZURhdGFDb250cmFjdC5DcmVkZW50aWFsU1UwNkNZMTQifQ=="
+		},
+		"connectVia": {
+			"referenceName": "integrationRuntime1",
+			"type": "IntegrationRuntimeReference"
+		}
+	}
+}
