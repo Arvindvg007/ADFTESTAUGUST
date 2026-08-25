@@ -3,24 +3,11 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "Lookup1",
-				"type": "Lookup",
-				"dependsOn": [],
-				"policy": {
-					"timeout": "0.12:00:00",
-					"retry": 0,
-					"retryIntervalInSeconds": 30,
-					"secureOutput": false,
-					"secureInput": false
-				},
-				"userProperties": []
-			},
-			{
-				"name": "If Condition1",
+				"name": "IF NEW RECORD EXIST",
 				"type": "IfCondition",
 				"dependsOn": [
 					{
-						"activity": "Lookup1",
+						"activity": "LookUp_MAX",
 						"dependencyConditions": [
 							"Succeeded"
 						]
@@ -46,6 +33,42 @@
 							}
 						}
 					]
+				}
+			},
+			{
+				"name": "LookUp_MAX",
+				"type": "Lookup",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "SqlServerSource",
+						"sqlReaderQuery": "SELECT MAX(@{pipeline().parameters.WatermarkColumn}) AS MaxValue\nFROM @{pipeline().parameters.TableSchema}.@{pipeline().parameters.TableName}\n",
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"dataset": {
+						"referenceName": "DS_lookup_data",
+						"type": "DatasetReference",
+						"parameters": {
+							"tablename": {
+								"value": "@pipeline().parameters.TableName",
+								"type": "Expression"
+							},
+							"schemaname": {
+								"value": "@pipeline().parameters.TableSchema",
+								"type": "Expression"
+							}
+						}
+					},
+					"firstRowOnly": true
 				}
 			}
 		],
