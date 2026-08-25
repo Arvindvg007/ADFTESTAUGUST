@@ -1,0 +1,20 @@
+{
+	"name": "DS_LookUp_max",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_PARENT_SQLSEVER_LOOKUP",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"schemaname": {
+				"type": "string"
+			},
+			"tablename": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"schema": []
+	}
+}
