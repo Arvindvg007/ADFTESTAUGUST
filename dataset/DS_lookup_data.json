@@ -11,9 +11,6 @@
 			},
 			"schemaname": {
 				"type": "string"
-			},
-			"schemaname1": {
-				"type": "string"
 			}
 		},
 		"annotations": [],
