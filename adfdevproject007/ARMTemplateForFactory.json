@@ -163,7 +163,7 @@
 			"properties": {
 				"activities": [
 					{
-						"name": "Stored procedure1",
+						"name": "SP_EXEC_Update_WaterMark",
 						"type": "SqlServerStoredProcedure",
 						"dependsOn": [],
 						"policy": {
@@ -173,9 +173,34 @@
 							"secureOutput": false,
 							"secureInput": false
 						},
-						"userProperties": [],
+						"userProperties": [
+							{}
+						],
 						"typeProperties": {
-							"storedProcedureName": "[[dbo].[UpdateWatermark]"
+							"storedProcedureName": "[[dbo].[UpdateWatermark]",
+							"storedProcedureParameters": {
+								"TableName": {
+									"value": {
+										"value": "@pipeline().parameters.TableName",
+										"type": "Expression"
+									},
+									"type": "String"
+								},
+								"TableSchema": {
+									"value": {
+										"value": "@pipeline().parameters.TableSchema",
+										"type": "Expression"
+									},
+									"type": "String"
+								},
+								"WatermarkColumn": {
+									"value": {
+										"value": "@pipeline().parameters.WatermarkColumn",
+										"type": "Expression"
+									},
+									"type": "String"
+								}
+							}
 						},
 						"linkedServiceName": {
 							"referenceName": "LS_PARENT_SQLSEVER_LOOKUP",
@@ -185,6 +210,20 @@
 				],
 				"policy": {
 					"elapsedTimeMetric": {}
+				},
+				"parameters": {
+					"TableSchema": {
+						"type": "String"
+					},
+					"TableName": {
+						"type": "String"
+					},
+					"WatermarkColumn": {
+						"type": "String"
+					},
+					"LastLoadValue": {
+						"type": "String"
+					}
 				},
 				"annotations": []
 			},
@@ -504,6 +543,7 @@
 								"value": "@activity('LokUP_SQl_WATERMARK_TABLE').output.value",
 								"type": "Expression"
 							},
+							"isSequential": false,
 							"activities": [
 								{
 									"name": "Execute Pipeline1",
@@ -535,29 +575,6 @@
 				"[concat(variables('factoryId'), '/datasets/DS_SQLSEVER_TBLE_LOOKUP')]",
 				"[concat(variables('factoryId'), '/pipelines/PL_Child_pipeline_Incremental_Logic')]"
 			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/PL_WAIT')]",
-			"type": "Microsoft.DataFactory/factories/pipelines",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"activities": [
-					{
-						"name": "Wait1",
-						"type": "Wait",
-						"dependsOn": [],
-						"userProperties": [],
-						"typeProperties": {
-							"waitTimeInSeconds": 1
-						}
-					}
-				],
-				"policy": {
-					"elapsedTimeMetric": {}
-				},
-				"annotations": []
-			},
-			"dependsOn": []
 		},
 		{
 			"name": "[concat(parameters('factoryName'), '/DS_CopySQL_DATA')]",

@@ -226,6 +226,9 @@
 					"LS_PARENT_SQLSEVER_LOOKUP_password": {
 						"value": "[parameters('LS_PARENT_SQLSEVER_LOOKUP_password')]"
 					},
+					"LS_SQL_ADLS_password": {
+						"value": "[parameters('LS_SQL_ADLS_password')]"
+					},
 					"AzureDataLakeStorage1_properties_typeProperties_url": {
 						"value": "[parameters('AzureDataLakeStorage1_properties_typeProperties_url')]"
 					},
@@ -273,6 +276,15 @@
 					},
 					"LS_PARENT_SQLSEVER_LOOKUP_properties_typeProperties_userName": {
 						"value": "[parameters('LS_PARENT_SQLSEVER_LOOKUP_properties_typeProperties_userName')]"
+					},
+					"LS_SQL_ADLS_properties_typeProperties_server": {
+						"value": "[parameters('LS_SQL_ADLS_properties_typeProperties_server')]"
+					},
+					"LS_SQL_ADLS_properties_typeProperties_database": {
+						"value": "[parameters('LS_SQL_ADLS_properties_typeProperties_database')]"
+					},
+					"LS_SQL_ADLS_properties_typeProperties_userName": {
+						"value": "[parameters('LS_SQL_ADLS_properties_typeProperties_userName')]"
 					}
 				}
 			},
@@ -291,18 +303,6 @@
 				"parameters": {
 					"factoryName": {
 						"value": "[parameters('factoryName')]"
-					},
-					"LS_SQL_ADLS_password": {
-						"value": "[parameters('LS_SQL_ADLS_password')]"
-					},
-					"LS_SQL_ADLS_properties_typeProperties_server": {
-						"value": "[parameters('LS_SQL_ADLS_properties_typeProperties_server')]"
-					},
-					"LS_SQL_ADLS_properties_typeProperties_database": {
-						"value": "[parameters('LS_SQL_ADLS_properties_typeProperties_database')]"
-					},
-					"LS_SQL_ADLS_properties_typeProperties_userName": {
-						"value": "[parameters('LS_SQL_ADLS_properties_typeProperties_userName')]"
 					}
 				}
 			},
